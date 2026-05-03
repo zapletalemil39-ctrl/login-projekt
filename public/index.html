@@ -8,7 +8,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(180deg, #0f1115, #050607);
+  background: #0f1115;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,93 +16,88 @@ body {
   color: white;
 }
 
-.container {
+.box {
   background: #1c1f26;
-  padding: 35px;
+  padding: 30px;
   border-radius: 12px;
-  width: 320px;
-  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+  width: 300px;
+  text-align: center;
 }
 
 h2 {
-  margin-bottom: 25px;
-  text-align: center;
+  margin-bottom: 20px;
 }
 
 input {
   width: 100%;
-  padding: 14px;
-  margin: 10px 0;
+  padding: 12px;
+  margin: 8px 0;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   background: #2a2d35;
   color: white;
 }
 
 button {
   width: 100%;
-  padding: 14px;
+  padding: 12px;
   margin-top: 10px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   background: #5865f2;
   color: white;
-  font-weight: bold;
   cursor: pointer;
 }
 
-.secondary {
-  background: #2a2d35;
+button:hover {
+  background: #4752c4;
+}
+
+.forgot {
+  background: transparent;
+  color: #aaa;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.forgot:hover {
+  color: white;
 }
 
 #msg {
   margin-top: 15px;
-  font-size: 13px;
-  color: #aaa;
-  text-align: center;
+  color: red;
+  font-size: 14px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h2>Anmelden</h2>
+<div class="box">
+  <h2>Bei Roblox anmelden</h2>
 
-  <input id="user" placeholder="Benutzername / E-Mail">
+  <input id="user" placeholder="E-Mail / Benutzername">
   <input id="pass" type="password" placeholder="Passwort">
 
-  <button onclick="login()">Anmelden</button>
-  <button class="secondary" onclick="register()">Registrieren</button>
+  <button onclick="fakeLogin()">Anmelden</button>
+  <button onclick="fakeLogin()">Registrieren</button>
+
+  <button class="forgot" onclick="forgot()">
+    Passwort vergessen?
+  </button>
 
   <p id="msg"></p>
 </div>
 
 <script>
-async function register() {
-  const res = await fetch("/register", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({
-      username: user.value,
-      password: pass.value
-    })
-  });
-
-  msg.innerText = await res.text();
+function fakeLogin() {
+  document.getElementById("msg").innerText =
+    "Benutzername oder Passwort ist falsch";
 }
 
-async function login() {
-  const res = await fetch("/login", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({
-      username: user.value,
-      password: pass.value
-    })
-  });
-
-  msg.innerText = await res.text();
+function forgot() {
+  window.location.href = "https://www.roblox.com/de/login/forgot-password-or-username";
 }
 </script>
 
