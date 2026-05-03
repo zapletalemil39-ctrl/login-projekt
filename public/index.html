@@ -13,63 +13,64 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  color: white;
+  color: #fff;
 }
 
 .container {
-  width: 350px;
+  width: 360px;
 }
 
 h2 {
-  font-size: 26px;
+  font-size: 28px;
+  font-weight: bold;
   margin-bottom: 20px;
 }
 
-input {
+.input {
   width: 100%;
   padding: 14px;
-  margin: 8px 0;
+  margin-bottom: 10px;
   border: 1px solid #3a3d45;
   background: #2a2d35;
   color: white;
   font-size: 14px;
 }
 
-input::placeholder {
+.input::placeholder {
   color: #aaa;
 }
 
-.main-btn {
+.login-btn {
   width: 100%;
   padding: 14px;
-  margin-top: 10px;
-  background: transparent;
   border: 1px solid #3a3d45;
+  background: transparent;
   color: white;
   cursor: pointer;
+  margin-bottom: 15px;
 }
 
-.main-btn:hover {
+.login-btn:hover {
   background: #2a2d35;
 }
 
 .link {
-  margin-top: 15px;
-  font-size: 14px;
-  color: white;
   text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 
 .divider {
-  border-top: 1px solid #3a3d45;
+  height: 1px;
+  background: #3a3d45;
   margin: 20px 0;
 }
 
 .secondary-btn {
   width: 100%;
   padding: 14px;
-  margin-top: 10px;
+  margin-bottom: 10px;
   background: #2a2d35;
   border: none;
   color: white;
@@ -81,13 +82,12 @@ input::placeholder {
 }
 
 .register {
-  margin-top: 20px;
   text-align: center;
   font-size: 14px;
+  margin-top: 20px;
 }
 
 .register span {
-  color: white;
   font-weight: bold;
   cursor: pointer;
 }
@@ -99,10 +99,10 @@ input::placeholder {
 <div class="container">
   <h2>Bei Roblox anmelden</h2>
 
-  <input placeholder="Benutzer/E-Mail/Telefon">
-  <input type="password" placeholder="Passwort">
+  <input class="input" placeholder="Benutzer/E-Mail/Telefon">
+  <input class="input" type="password" placeholder="Passwort">
 
-  <button class="main-btn">Anmelden</button>
+  <button class="login-btn">Anmelden</button>
 
   <div class="link">Passwort oder Benutzername vergessen?</div>
 
