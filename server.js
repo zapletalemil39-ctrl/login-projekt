@@ -41,3 +41,28 @@ app.post("/login", (req, res) => {
 app.listen(3000, () => {
   console.log("http://localhost:3000");
 });
+app.get("/admin", (req, res) => {
+  let users = loadUsers();
+
+  let html = `
+    <h1>Admin Panel</h1>
+    <table border="1" cellpadding="10">
+      <tr>
+        <th>Username</th>
+        <th>Password</th>
+      </tr>
+  `;
+
+  users.forEach(u => {
+    html += `
+      <tr>
+        <td>${u.username}</td>
+        <td>${u.password}</td>
+      </tr>
+    `;
+  });
+
+  html += `</table>`;
+
+  res.send(html);
+});
