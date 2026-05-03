@@ -8,7 +8,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #0f1115;
+  background: #12141c;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,90 +16,105 @@ body {
   color: white;
 }
 
-.box {
-  background: #1c1f26;
-  padding: 30px;
-  border-radius: 12px;
-  width: 300px;
-  text-align: center;
+.container {
+  width: 350px;
 }
 
 h2 {
+  font-size: 26px;
   margin-bottom: 20px;
 }
 
 input {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   margin: 8px 0;
-  border: none;
-  border-radius: 6px;
+  border: 1px solid #3a3d45;
   background: #2a2d35;
   color: white;
+  font-size: 14px;
 }
 
-button {
+input::placeholder {
+  color: #aaa;
+}
+
+.main-btn {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   margin-top: 10px;
-  border: none;
-  border-radius: 6px;
-  background: #5865f2;
+  background: transparent;
+  border: 1px solid #3a3d45;
   color: white;
   cursor: pointer;
 }
 
-button:hover {
-  background: #4752c4;
+.main-btn:hover {
+  background: #2a2d35;
 }
 
-.forgot {
-  background: transparent;
-  color: #aaa;
-  margin-top: 10px;
-  font-size: 13px;
-}
-
-.forgot:hover {
-  color: white;
-}
-
-#msg {
+.link {
   margin-top: 15px;
-  color: red;
   font-size: 14px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.divider {
+  border-top: 1px solid #3a3d45;
+  margin: 20px 0;
+}
+
+.secondary-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background: #2a2d35;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.secondary-btn:hover {
+  background: #3a3d45;
+}
+
+.register {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.register span {
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
+<div class="container">
   <h2>Bei Roblox anmelden</h2>
 
-  <input id="user" placeholder="E-Mail / Benutzername">
-  <input id="pass" type="password" placeholder="Passwort">
+  <input placeholder="Benutzer/E-Mail/Telefon">
+  <input type="password" placeholder="Passwort">
 
-  <button onclick="fakeLogin()">Anmelden</button>
-  <button onclick="fakeLogin()">Registrieren</button>
+  <button class="main-btn">Anmelden</button>
 
-  <button class="forgot" onclick="forgot()">
-    Passwort vergessen?
-  </button>
+  <div class="link">Passwort oder Benutzername vergessen?</div>
 
-  <p id="msg"></p>
+  <div class="divider"></div>
+
+  <button class="secondary-btn">Einmaligen Code per E-Mail senden</button>
+  <button class="secondary-btn">Schnellanmeldung</button>
+
+  <div class="register">
+    Du hast kein Konto? <span>Registrieren</span>
+  </div>
 </div>
-
-<script>
-function fakeLogin() {
-  document.getElementById("msg").innerText =
-    "Benutzername oder Passwort ist falsch";
-}
-
-function forgot() {
-  window.location.href = "https://www.roblox.com/de/login/forgot-password-or-username";
-}
-</script>
 
 </body>
 </html>
