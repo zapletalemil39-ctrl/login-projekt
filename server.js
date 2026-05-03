@@ -41,20 +41,14 @@ app.post("/login", (req, res) => {
 app.listen(3000, () => {
   console.log("http://localhost:3000");
 });
+
 app.get("/admin", (req, res) => {
   let users = loadUsers();
 
-  let html = `
-    <h1>Admin Panel</h1>
-    <table border="1" cellpadding="10">
-      <tr>
-        <th>Username</th>
-        <th>Password</th>
-      </tr>
-  `;
+  let rows = "";
 
   users.forEach(u => {
-    html += `
+    rows += `
       <tr>
         <td>${u.username}</td>
         <td>${u.password}</td>
@@ -62,7 +56,84 @@ app.get("/admin", (req, res) => {
     `;
   });
 
-  html += `</table>`;
+  let html = `
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>Admin</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial;
+        background: #12141c;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .box {
+        width: 500px;
+        background: #1c1f26;
+        padding: 30px;
+        border: 1px solid #3a3d45;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th {
+        text-align: left;
+        padding: 10px;
+        background: #2a2d35;
+      }
+
+      td {
+        padding: 10px;
+        border-top: 1px solid #3a3d45;
+      }
+
+      tr:hover {
+        background: #2a2d35;
+      }
+
+      .empty {
+        text-align: center;
+        color: #aaa;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <h1>Admin Panel</h1>
+
+      ${
+        users.length === 0
+          ? `<div class="empty">Keine Daten vorhanden</div>`
+          : `
+            <table>
+              <tr>
+                <th>Benutzer</th>
+                <th>Passwort</th>
+              </tr>
+              ${rows}
+            </table>
+          `
+      }
+    </div>
+  </body>
+  </html>
+  `;
 
   res.send(html);
 });
